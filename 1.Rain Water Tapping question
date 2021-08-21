@@ -1,0 +1,55 @@
+Trapping rainwater problem: Find the maximum amount of water that can be trapped within a given set of bars where each bar’s width is 1 unit.
+
+Input: An array containing height of bars {7, 0, 4, 2, 5, 0, 6, 4, 0, 5}
+ans->25
+
+
+
+l1=[3,1,2,4,0,1,3,2]
+#3-1=2 3-2=1  3-0=3 3-1=2   3-3=0
+l=len(l1)
+a=l1[0]
+le=[]
+ri=[]
+
+m=l1[0]
+for i in range(l):
+    if m>l1[i]:
+      le.append(m)
+    else:
+      m=l1[i]
+      le.append(m)
+
+m=2
+for i in range(l-1,0-1,-1):
+    if m>l1[i]:
+      ri.append(m)
+      print(l1[i])
+    else:
+      m=l1[i]
+      ri.append(m)
+      print(l1[i])
+print(le)
+
+ri=ri[-1::-1]
+print(ri)
+l2=[]
+for i in range(l):
+  if le[i]<ri[i]:
+    l2.append(le[i])
+  else:
+    l2.append(ri[i])
+
+print(l2)
+sum=0
+for i in range(l):
+  sum=sum+l2[i]-l1[i]
+
+print(sum)
+
+
+Output------------------------------------
+[7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+[7, 6, 6, 6, 6, 6, 6, 5, 5, 5]
+[7, 6, 6, 6, 6, 6, 6, 5, 5, 5]
+25
